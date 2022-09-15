@@ -77,7 +77,44 @@ export default class PopUpCtHead extends React.Component {
         return;
       }
     }
-
+    if(data.Hemorrhage){
+      if (data.IntraRight) {
+        if(!(data.RightIntraLocation && data.Chronicity && data.Size && data.MassEffect)){
+          document.querySelectorAll('label[id^="#/properties/IntraRight"]').forEach((el) => {
+                el.classList.add("err");
+              });
+          return;
+        }
+      }
+      if (data.IntraLeft) {
+        if(!(data.LeftIntraLocation && data.Chronicity1 && data.Size1 && data.MassEffect1)){
+          document.querySelectorAll('label[id^="#/properties/IntraLeft"]').forEach((el) => {
+                el.classList.add("err");
+              });
+          return;
+        }
+      }
+      if (data.ExtraAxial) {
+        if (data.SDH) {
+          if (data.RightSDH) {
+            if(!(data.RightLocation && data.RightLocaitonChronicity && data.RightMaximumThickness && data.RightMassEffect)){
+              document.querySelectorAll('label[id^="#/properties/SDH"]').forEach((el) => {
+                    el.classList.add("err");
+                  });
+              return;
+            }
+          }
+          if (data.LeftSDH) {
+            if(!(data.LeftLocation && data.LeftLocaitonChronicity && data.LeftMaximumThickness && data.LeftMassEffect)){
+              document.querySelectorAll('label[id^="#/properties/SDH"]').forEach((el) => {
+                    el.classList.add("err");
+                  });
+              return;
+            }
+          }
+        }
+      }
+    }
 
     if (!err) {
       this.props.handleClick();
@@ -100,8 +137,6 @@ export default class PopUpCtHead extends React.Component {
           <Form3 data={data} handleChange={this.handleChange} />
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" onClick={() => window.location.reload()}>Back</button>
-          <button type="button" className="btn btn-primary" style={{ margin: '9px' }} onClick={this.handleDone}>Done</button>
         </div>
       </Modal>
     );

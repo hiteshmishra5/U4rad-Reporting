@@ -138,6 +138,7 @@ def PersonalInfo(request):
         reference = request.POST['reference']
         resume = request.FILES['resume']
         uploadpicture = request.FILES['uploadpicture']
+        signature = request.FILES['signature']
 
         user = User.objects.create_user(username=email, email=email, password=password, first_name=name)
 
@@ -146,7 +147,7 @@ def PersonalInfo(request):
 
         x = PersonalInfoModel.objects.create(user=user, phone=phone, altphone=altphone,
                                              reference=reference, resume=resume,
-                                             uploadpicture=uploadpicture)
+                                             uploadpicture=uploadpicture, signature=signature)
         x.save()
         print("Done.!!")
         return JsonResponse(status=201, data={"message": "success"})

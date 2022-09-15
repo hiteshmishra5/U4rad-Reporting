@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-bbwrvz56rue-v#$jid)f!8^s1lxl5pih((3$+00ir7#=7t$jc*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://127.0.0.1','https://78e0-2401-4900-1c67-1ed0-514c-d878-6891-4dcc.in.ngrok.io']
 
 # Application definition
 
@@ -130,3 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+MEDIA_URL = '/media/'

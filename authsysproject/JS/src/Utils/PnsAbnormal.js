@@ -867,22 +867,29 @@ class PnsAbnormal extends Component {
       report += "<p>" + "Posterior choana is normal on both sides." + "</p>";
     }
 
+    var current_user = JSON.parse(document.getElementById("current-user").textContent);
+
     report +=
       this.pageBreak() +
+
       this.getImpression(impression, totalCovidPoints) +
-      this.getCorads();
+      this.getCorads(current_user); // TO BE ADDED
+
     this.setState({ reportFrmData: report }, () => {
       this.props.generateReport(report);
     });
   }
 
+
+
   pageBreak() {
     return '<div class="page-break ck-widget ck-widget_selected" contenteditable="false" draggable="true"></div>';
   }
-
-  getCorads() {
-    return "<p><i> </i></p>" +
-      "<p> </p>";
+  //TO BE ADDED
+  getCorads(user) {
+    return (
+      "<p><br><img src='" + user.signature + "' height='75' /><p>" + user.full_name + "<br>" + user.designation + ", MBBS</p></p>"
+    );
   }
 
   getImpression(impression, totalCovidPoints) {

@@ -4,18 +4,18 @@ import "./style.css";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import XrayChest from "./Utils/XrayChest";
-//import XrayLeftShoulder from "./Utils/XrayLeftShoulder";
-//import XrayRightShoulder from "./Utils/XrayRightShoulder";
+import XrayLeftShoulder from "./Utils/XrayLeftShoulder";
+import XrayRightShoulder from "./Utils/XrayRightShoulder";
 import XrayKnee from "./Utils/XrayKnee";
-//import XraySpineCervical from "./Utils/XraySpineCervical";
-//import XraySpineLumber from "./Utils/XraySpineLumber";
-//import XraySpineDorsal from "./Utils/XraySpineDorsal";
-//import NormalTemplate from "./Utils/NormalTemplate";
+import XraySpineCervical from "./Utils/XraySpineCervical";
+import XraySpineLumber from "./Utils/XraySpineLumber";
+import XraySpineDorsal from "./Utils/XraySpineDorsal";
+import NormalTemplate from "./Utils/NormalTemplate";
 import CtHead from "./Utils/CtHead";
 import PnsAbnormal from "./Utils/PnsAbnormal";
+import MriBrain from "./Utils/MriBrain";
 
-const options = [{ label: 'X-RAY CHEST', id: 1 },
-{ label: "X-RAY KNEE", id: 4 }, { label: 'CT HEAD', id: 9 }, { label: 'CT PNS', id: 10 }
+const options = [{ label: 'X-RAY CHEST', id: 1 }, { label: "X-RAY KNEE", id: 2 }, { label: "X-RAY SPINE(DORSAL)", id: 3 }, { label: "X-RAY SPINE(CERVICAL)", id: 4 }, { label: "X-RAY SPINE(LUMBER)", id: 5 }, { label: "X-RAY RIGHT-SHOULDER", id: 6 }, { label: "X-RAY LEFT-SHOULDER", id: 7}, { label: "X-RAY TEMPLATE", id: 8}, { label: 'CT HEAD', id: 9 }, { label: 'CT PNS', id: 10 }, { label: 'MRI BRAIN', id: 11 },
 ]
 
 
@@ -140,24 +140,27 @@ class App extends Component {
         {
           this.state.modal && (options_label === "X-RAY CHEST") ?
             <XrayChest handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-            //this.state.modal && (options_label === "X-RAY LEFT-SHOULDER") ?
-              //<XrayLeftShoulder handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-              //this.state.modal && (options_label === "X-RAY RIGHT-SHOULDER") ?
-                //<XrayRightShoulder handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+            this.state.modal && (options_label === "X-RAY LEFT-SHOULDER") ?
+              <XrayLeftShoulder handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+              this.state.modal && (options_label === "X-RAY RIGHT-SHOULDER") ?
+                <XrayRightShoulder handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
                 this.state.modal && (options_label === "X-RAY KNEE") ?
                   <XrayKnee handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-                  //this.state.modal && (options_label === "X-RAY SPINE(CERVICAL)") ?
-                    //<XraySpineCervical handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-                    //this.state.modal && (options_label === "X-RAY SPINE(LUMBER)") ?
-                      //<XraySpineLumber handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-                      //this.state.modal && (options_label === "X-RAY SPINE(DORSAL)") ?
-                        //<XraySpineDorsal handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
-                        //this.state.modal && (options_label === "X-RAY TEMPLATE") ?
-                          //<NormalTemplate handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+                  this.state.modal && (options_label === "X-RAY SPINE(CERVICAL)") ?
+                    <XraySpineCervical handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+                    this.state.modal && (options_label === "X-RAY SPINE(LUMBER)") ?
+                      <XraySpineLumber handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+                      this.state.modal && (options_label === "X-RAY SPINE(DORSAL)") ?
+                        <XraySpineDorsal handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
+                        this.state.modal && (options_label === "X-RAY TEMPLATE") ?
+                          <NormalTemplate handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
                           this.state.modal && (options_label === "CT HEAD") ?
                             <CtHead handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :
                             this.state.modal && (options_label === "CT PNS") ?
-                              <PnsAbnormal handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> : ""
+                              <PnsAbnormal handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} 
+                              generatePatientTable={this.generatePatientTable()} /> : 
+                              this.state.modal && (options_label === "MRI BRAIN") ?
+                              <MriBrain handleClick={this.handleClick} reportFrmData={reportFrmData} generateReport={this.generateReport} generatePatientTable={this.generatePatientTable()} /> :""
         }
         <div className="document-editor">
           <div className="document-editor__toolbar"/>

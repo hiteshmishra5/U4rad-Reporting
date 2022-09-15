@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap4-modal";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import Form3 from "../Forms/form4";
+import Form4 from "../Forms/form4";
 
 export default class PopUpPNS extends React.Component {
   constructor() {
@@ -273,11 +273,9 @@ export default class PopUpPNS extends React.Component {
 
         </div>
         <div className="modal-body">
-          <Form3 data={data} handleChange={this.handleChange} />
+          <Form4 data={data} handleChange={this.handleChange} />
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" onClick={() => window.location.reload()}>Back</button>
-          <button type="button" className="btn btn-primary" style={{ margin: '9px' }} onClick={this.handleDone}>Done</button>
         </div>
       </Modal>
     );

@@ -19,9 +19,13 @@ class ReportingBotView(TemplateView):
     #         return super(ConfigureView, self).get(self.request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
+        user = self.request.user
         return {
             'current_user': {
-                'username': self.request.user.first_name
+                'username': user.first_name,
+                'full_name': "{first_name} {last_name}".format(first_name=user.first_name, last_name=user.last_name),
+                'signature': user.personalinfo.signature.url,
+                'designation': user.workexp.designation,
             }
         }
 

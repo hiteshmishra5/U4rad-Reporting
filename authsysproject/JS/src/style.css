@@ -282,3 +282,8 @@ tbody {
   margin-left: 5px;
   padding-right: 25px;
 }
+
+.modal-body {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+}

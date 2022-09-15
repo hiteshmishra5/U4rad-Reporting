@@ -156,7 +156,6 @@ export default class PopUpXrayChest extends React.Component {
         });
         return;
       }
-
     }
 
     if (data.SoftTissue) {
@@ -286,8 +285,6 @@ export default class PopUpXrayChest extends React.Component {
           <Form2 data={data} handleChange={this.handleChange} />
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" onClick={() => window.location.reload()}>Back</button>
-          <button type="button" className="btn btn-primary" style={{ margin: '9px' }} onClick={this.handleDone}>Done</button>
         </div>
       </Modal>
     );

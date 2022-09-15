@@ -1035,12 +1035,12 @@ class XrayChest extends Component {
         if (frmData.leftHilarShadow) {
           if (frmData.leftHilarShadow === 'calcifications' && frmData.CalcificationImpressionLHS) {
             report += "<p>" + "<b>" + text.lefthilarshadowCalcification + "</b>" + "</p>";
-            impression.push("<p>" + "<b>" + frmData.CalcificationImpressionLHS + "</b>" + "</p>");
+            impression.push("<b>" + frmData.CalcificationImpressionLHS + "</b>");
           }
           else {
             if (frmData.leftHilarShadow === 'prominent' && frmData.ProminentImpressionLHS) {
               report += "<p>" + "<b>" + text.lefthilarshadow.replace("{1}", frmData.leftHilarShadow) + "</b>" + "</p>";
-              impression.push("<p>" + "<b>" + frmData.ProminentImpressionLHS + "</b>" + "</p>");
+              impression.push("<b>" + frmData.ProminentImpressionLHS + "</b>");
             }
           }
 
@@ -1065,14 +1065,14 @@ class XrayChest extends Component {
     if (frmData.rightCostophrenicAngle === frmData.leftCostophrenicAngle && frmData.rightCostophrenicAngle !== undefined) {
       if (frmData.rightCostophrenicAngle === 'obliterated' && frmData.rightObliteratedType) {
         report += "<p>" + "<b>" + text.bothCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</p>" + "</b>";
-        impression.push("<p>" + "<b>" + text.bothCPAngleImpression.replace("{1}", frmData.rightCostophrenicAngle) + "</p>" + "</b>");
+        impression.push("<b>" + text.bothCPAngleImpression.replace("{1}", frmData.rightCostophrenicAngle) + "</p>");
       }
     }
 
     if (frmData.rightCostophrenicAngle === frmData.leftCostophrenicAngle && frmData.rightCostophrenicAngle !== undefined) {
       if (frmData.rightCostophrenicAngle === 'obliterated' && !frmData.rightObliteratedType) {
         report += "<p>" + "<b>" + text.bothCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>";
-        impression.push("<p>" + "<b>" + text.bothCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>");
+        impression.push("<b>" + text.bothCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>");
       }
 
     }
@@ -1083,26 +1083,26 @@ class XrayChest extends Component {
         if (frmData.rightCostophrenicAngle) {
           if (frmData.rightCostophrenicAngle === 'obliterated' && !frmData.rightObliteratedType) {
             report += "<p>" + "<b>" + text.rightCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>";
-            impression.push("<p>" + "<b>" + text.rightCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>")
+            impression.push("<b>" + text.rightCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>")
           }
         }
         if (frmData.rightCostophrenicAngle) {
           if (frmData.rightCostophrenicAngle === 'obliterated' && frmData.rightObliteratedType) {
             report += "<p>" + "<b>" + text.rightCPAngle.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>";
-            impression.push("<p>" + "<b>" + text.rightCPAngleImpression.replace("{1}", frmData.rightCostophrenicAngle) + "</b>" + "</p>");
+            impression.push("<b>" + text.rightCPAngleImpression.replace("{1}", frmData.rightCostophrenicAngle) + "</b>");
           }
         }
 
         if (frmData.leftCostophrenicAngle) {
           if (frmData.leftCostophrenicAngle === 'obliterated' && !frmData.leftObliteratedType) {
             report += "<p>" + "<b>" + text.leftCPAngle.replace("{1}", frmData.leftCostophrenicAngle) + "</b>" + "</p>";
-            impression.push("<p>" + "<b>" + text.leftCPAngle.replace("{1}", frmData.leftCostophrenicAngle) + "</b>" + "</p>");
+            impression.push("<b>" + text.leftCPAngle.replace("{1}", frmData.leftCostophrenicAngle) + "</b>");
           }
         }
         if (frmData.leftCostophrenicAngle) {
           if (frmData.leftCostophrenicAngle === 'obliterated' && frmData.leftObliteratedType) {
             report += "<p>" + "<b>" + text.leftCPAngle.replace("{1}", frmData.leftCostophrenicAngle) + "</b>" + "</p>";
-            impression.push("<p>" + "<b>" + text.leftCPAngleImpression.replace("{1}", frmData.leftCostophrenicAngle) + "</b>" + "</p>");
+            impression.push("<b>" + text.leftCPAngleImpression.replace("{1}", frmData.leftCostophrenicAngle) + "</b>");
           }
         }
 
@@ -1117,7 +1117,7 @@ class XrayChest extends Component {
           || frmData.pneumothoraxRType === 'Moderate'
           || frmData.pneumothoraxRType === 'Severe') {
           report += "<p>" + "<b>" + text.pneumothoraxRTypes.replace("{1}", frmData.pneumothoraxRType) + "</b>" + "</p>";
-          impression.push("<p>" + "<b>" + text.pneumothoraxRTypesImpression.replace("{1}", frmData.pneumothoraxRType) + "</b>" + "</p>");
+          impression.push("<b>" + text.pneumothoraxRTypesImpression.replace("{1}", frmData.pneumothoraxRType) + "</b>");
         }
       }
 
@@ -1126,53 +1126,53 @@ class XrayChest extends Component {
           || frmData.pneumothoraxLType === 'Moderate'
           || frmData.pneumothoraxLType === 'Severe') {
           report += "<p>" + "<b>" + text.pneumothoraxLTypes.replace("{1}", frmData.pneumothoraxLType) + "</b>" + "</p>";
-          impression.push("<p>" + "<b>" + text.pneumothoraxLTypesImpression.replace("{1}", frmData.pneumothoraxLType) + "</b>" + "</p>");
+          impression.push("<b>" + text.pneumothoraxLTypesImpression.replace("{1}", frmData.pneumothoraxLType) + "</b>");
         }
       }
       if (frmData.pneumothoraxL && frmData.pneumothoraxR) {
         if (frmData.pneumothoraxLType === 'Mild' && frmData.pneumothoraxRType === 'Mild') {
           report += "<p>" + "<b>" + text.pneumothoraxBothPartialTypes.replace("{1}", 'both') + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + text.pneumothoraxBothPartialTypesImpression.replace("{1}", 'both') + "</b>" + "</b>");
+          impression.push("<b>" + text.pneumothoraxBothPartialTypesImpression.replace("{1}", 'both') + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Moderate' && frmData.pneumothoraxRType === 'Moderate') {
           report += "<p>" + "<b>" + text.pneumothoraxBothCompleteTypes.replace("{1}", 'both') + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + text.pneumothoraxBothCompleteTypesImpression.replace("{1}", 'both') + "</b>" + "</b>");
+          impression.push("<b>" + text.pneumothoraxBothCompleteTypesImpression.replace("{1}", 'both') + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Severe' && frmData.pneumothoraxRType === 'Severe') {
           report += "<p>" + "<b>" + text.pneumothoraxBothMediastinalTypes.replace("{1}", 'both') + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + text.pneumothoraxBothMediastinalTypesImpression.replace("{1}", 'both') + "</b>" + "</b>");
+          impression.push("<b>" + text.pneumothoraxBothMediastinalTypesImpression.replace("{1}", 'both') + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Mild' && frmData.pneumothoraxRType === 'Moderate') {
           report += "<p>" + "<b>" + "Mild pneumothorax noted on left Side.<br><br>Moderate pneumothorax noted on right side." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Mild pneumothorax- Left Side.<br><br>Moderate pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Mild pneumothorax- Left Side.<br><br>Moderate pneumothorax- Right Side." + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Mild' && frmData.pneumothoraxRType === 'Severe') {
           report += "<p>" + "<b>" + "Pneumothorax noted on left side with partial.<br><br>Pneumothorax noted on right side with mediastinal shift." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Mild pneumothorax- Left Side.<br><br>Severe pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Mild pneumothorax- Left Side.<br><br>Severe pneumothorax- Right Side." + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Moderate' && frmData.pneumothoraxRType === 'Mild') {
           report += "<p>" + "<b>" + "Moderate pneumothorax noted on left side.<br><br>Mild pneumothorax noted on right side." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Moderate pneumothorax- Left Side.<br><br>Mild pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Moderate pneumothorax- Left Side.<br><br>Mild pneumothorax- Right Side." + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Moderate' && frmData.pneumothoraxRType === 'Severe') {
           report += "<p>" + "<b>" + "Moderate pneumothorax noted on left side.<br><br>Severe pneumothorax noted on right side." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Moderate pneumothorax- Left side.<br><br>Severe pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Moderate pneumothorax- Left side.<br><br>Severe pneumothorax- Right Side." + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Severe' && frmData.pneumothoraxRType === 'Mild') {
           report += "<p>" + "<b>" + "Severe pneumothorax noted on left side.<br><br>Mild pneumothorax noted on right side." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Severe pneumothorax- Left side.<br><br>Mild pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Severe pneumothorax- Left side.<br><br>Mild pneumothorax- Right Side." + "</b>");
         }
 
         if (frmData.pneumothoraxLType === 'Severe' && frmData.pneumothoraxRType === 'Moderate') {
           report += "<p>" + "<b>" + "Severe pneumothorax noted on left side.<br><br>Moderate pneumothorax noted on right side." + "</b>" + "</b>";
-          impression.push("<p>" + "<b>" + "Severe pneumothorax- Left side.<br><br>Moderate pneumothorax- Right Side." + "</b>" + "</b>");
+          impression.push("<b>" + "Severe pneumothorax- Left side.<br><br>Moderate pneumothorax- Right Side." + "</b>");
         }
       }
     }
@@ -1182,18 +1182,18 @@ class XrayChest extends Component {
 
       if (frmData.cardiacSilhouette === 'enlarged' && !frmData.enlargedFindings) {
         report += "<p>" + "<b>" + "Cardiomegaly seen." + "</b>" + "</p>";
-        impression.push("<p>" + "<b>" + "Cardiomegaly seen." + "</b>" + "</p>");
+        impression.push("<b>" + "Cardiomegaly seen." + "</b>");
       }
       if (frmData.cardiacSilhouette === 'enlarged' && frmData.enlargedFindings) {
         report += "<p>" + "<b>" + 'Cardiomegaly seen ' + frmData.enlargedFindings + "." + "</b>" + "</p>";
-        impression.push("<p>" + "<b>" + 'Cardiomegaly seen ' + frmData.enlargedFindings + "." + "</b>" + "</p>");
+        impression.push("<b>" + 'Cardiomegaly seen ' + frmData.enlargedFindings + "." + "</b>");
       }
     }
     // Soft Tissue********************************************************************
     if (frmData.SoftTissue) {
       if (frmData.SoftText) {
         report += "<p>" + "<b>" + frmData.SoftText + "</b>" + "</p>";
-        impression.push("<p>" + "<b>" + frmData.SoftText + "</b>" + "</p>")
+        impression.push("<b>" + frmData.SoftText + "</b>");
       }
     }
 
@@ -1537,13 +1537,15 @@ class XrayChest extends Component {
     if (!(frmData.DomesOfDiaphragm || frmData.BothNormal)) {
       report += "Both domes of diaphragm are normal."
     }
-
+    //TO BE ADDED
+    var current_user = JSON.parse(document.getElementById("current-user").textContent);
 
     report +=
       this.pageBreak() +
 
       this.getImpression(impression, totalCovidPoints) +
-      this.getCorads();
+      this.getCorads(current_user); // TO BE ADDED
+
     this.setState({ reportFrmData: report }, () => {
       this.props.generateReport(report);
     });
@@ -1554,10 +1556,11 @@ class XrayChest extends Component {
   pageBreak() {
     return '<div class="page-break ck-widget ck-widget_selected" contenteditable="false" draggable="true"></div>';
   }
-
-  getCorads() {
-    return "<p><strong></strong></p>" +
-      "<small> </small>";
+  //TO BE ADDED
+  getCorads(user) {
+    return (
+      "<p><br><img src='" + user.signature + "' height='75' /><p>" + user.full_name + "<br>" + user.designation + ", MBBS</p></p>"
+    );
   }
 
   getImpression(impression, totalCovidPoints) {
