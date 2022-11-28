@@ -4,6 +4,7 @@ import PopUp from "../PopUps/PopUpMriBrain";
 
 import text from "../Forms/text_hrct_chest.json";
 
+
 class MriBrain extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,9 @@ class MriBrain extends Component {
     this.handleData = this.handleData.bind(this);
     this.formatData = this.formatData.bind(this);
   }
-
+  pageBreak(user) {
+    return ("<img src='" + user.companylogo + "' height='' width='300' />");
+  }
   async handleData(data) {
     console.log("====data index", data);
     this.setState({ frmData: data }, async () => {
@@ -39,9 +42,9 @@ class MriBrain extends Component {
     let totalCovidPoints = 0;
 
     
-
+    var current_user = JSON.parse(document.getElementById("current-user").textContent);
     if (frmData.allNormal || frmData.tonsillarHerniation || frmData.bonyCalvarium) {
-      report += "<h5>" + "<strong>" + "<u>" + "MRI-BRAIN" + "</u>" + "</strong>" + "</h5>";
+      report += this.pageBreak(current_user) + "<h5>" + "<strong>" + "<u>" + "MRI-BRAIN" + "</u>" + "</strong>" + "</h5>";
       report += "<h5>" + "<strong>" + "FINDINGS:" + "</strong>" + "</h5>";
     }
 

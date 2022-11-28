@@ -5,6 +5,7 @@ import PopUp from "../PopUps/PopUpCtHead";
 import text from "../Forms/text_hrct_chest.json";
 import { data } from "jquery";
 
+var current_user = JSON.parse(document.getElementById("current-user").textContent);
 class CtHead extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +25,14 @@ class CtHead extends Component {
         Infarct: false, 
         TypeofInfarct: false,
         Location: false,
+        InfractRight: false,
+        InfractLeft: false,
+        MassEffectInfract: false,
+        EffacedSulciInfract: false,
+        EffacedLateralVentriclesInfract: false,
+        UncalHerniationInfract: false,
+        InfractMidlineShift: false,
+        //MidliniftTextInfract: false,
 
         HemorrhagicTransFormation: false,
         Hemorrhage: false,
@@ -211,7 +220,6 @@ class CtHead extends Component {
         SAHRightOccipital: false,
         SAHRightTemporal: false,
         SAHRightFalx: false,
-        SAHRightTantorium: false,
         SAHRightBasalCisterns: false,
         SAHRightSylvianFissures: false,
         SAHRightSuprasellerCistern: false,
@@ -221,7 +229,6 @@ class CtHead extends Component {
         SAHLeftParietal: false,
         SAHLeftOccipital: false,
         SAHLeftTemporal: false,
-        SAHLeftTantorium: false,
         SAHLefttFalx: false,
         SAHLeftBasalCisterns: false,
         SAHLeftSylvianFissures: false,
@@ -247,14 +254,17 @@ class CtHead extends Component {
     this.handleData = this.handleData.bind(this);
     this.formatData = this.formatData.bind(this);
   }
-
+  pageBreak() {
+    
+  }
   async handleData(data) {
     console.log("====data index", data);
     this.setState({ frmData: data }, async () => {
       await this.formatData();
     });
   }
-
+  
+  
   async formatData() {
     const { frmData } = this.state;
     let report = this.props.generatePatientTable;
@@ -262,7 +272,7 @@ class CtHead extends Component {
     let pageBreak = 0;
     let totalCovidPoints = 0;
 
-
+  
     if (
       frmData.cerebralParenchyma ||
       frmData.bonyStructures ||
@@ -309,10 +319,16 @@ class CtHead extends Component {
     //Hemorrhage/////////////////////////////
     if (frmData.Hemorrhage) {
       if (frmData.IntraRight) {
-        if (frmData.Chronicity && frmData.ChronType) {
-          report += "<br>" + "<br>" + "<b>" + frmData.ChronType + " intraparenchymal hemorrhage " +
+        if (frmData.Chronicity && frmData.ChronType && frmData.RadioType==="Multiple") {
+          report += "<br>" + "<br>" + "<b>"+ "Multiple " + frmData.ChronType + " intraparenchymal hemorrhage " +
             "</b>";
-          impression.push("<b>" + frmData.ChronType + " intraparenchymal hemorrhage " + "</b>"
+          impression.push("<b>" + frmData.ChronType + "Multiple intraparenchymal hemorrhage " + "</b>"
+          );
+        }
+        else {
+          report += "<br>" + "<br>" + "<b>" + frmData.ChronType + " intraparenchymal hemorrhage " +
+          "</b>";
+          impression.push("<b>" + frmData.ChronType + "intraparenchymal hemorrhage " + "</b>"
           );
         }
         //*****combination for lobes */
@@ -361,7 +377,7 @@ class CtHead extends Component {
           }
         }
         
-        if (frmData.RightIntraLocation && frmData.Chronicity && frmData.ChronType) {
+        if (frmData.RightIntraLocation && frmData.Chronicity && frmData.ChronType && (frmData.RightIntraBasalGanglia || frmData.RightIntraThalamus || frmData.RightIntraCerebellum || frmData.RightIntraMedulla || frmData.RightIntraMidBrain || frmData.RightIntraPons)) {
           let arr = [];
           if (frmData.RightIntraBasalGanglia) {
             arr.push("basal ganglia");
@@ -429,7 +445,7 @@ class CtHead extends Component {
             impression.push("<b>" + "in right occipital lobe " + "</b>");
           }
         }
-        if (frmData.RightIntraLocation && !frmData.Chronicity) {
+        if (frmData.RightIntraLocation && !frmData.Chronicity && (frmData.RightIntraBasalGanglia || frmData.RightIntraThalamus || frmData.RightIntraCerebellum || frmData.RightIntraMedulla || frmData.RightIntraMidBrain || frmData.RightIntraPons)) {
           let arr = [];
           if (frmData.RightIntraBasalGanglia) {
             arr.push("basal ganglia");
@@ -480,7 +496,7 @@ class CtHead extends Component {
           );
         }
         if(frmData.MidlineShift) {
-          report +="<b>" + " and midline shift of " + frmData.MidliniftText + " mm, towards left. " +
+          report +="<b>" + " and midline shaft of " + frmData.MidliniftText + " mm, towards left. " +
             "</b>";
         }
         if (frmData.Intraventricular && frmData.IntraventriType === "Yes") {
@@ -505,11 +521,19 @@ class CtHead extends Component {
       }
       //Intra left
       if (frmData.IntraLeft) {
-        if (frmData.Chronicity1 && frmData.ChicityType1) {
+        if (frmData.Chronicity1 && frmData.ChicityType1 && frmData.RadioType1) {
+          report += "<br>" + "<br>" + "<b>"+ "Multiple " + frmData.ChicityType1 + " intraparenchymal hemorrhage " +
+            "</b>";
+          impression.push(
+            "<br>" + "<b>" + frmData.ChicityType1 + "Multiple intraparenchymal hemorrhage " +
+            "</b>"
+          );
+        }
+        else {
           report += "<br>" + "<br>" + "<b>" + frmData.ChicityType1 + " intraparenchymal hemorrhage " +
             "</b>";
           impression.push(
-            "<br>" + "<b>" + frmData.ChicityType1 + " intraparenchymal hemorrhage " +
+            "<br>" + "<b>" + frmData.ChicityType1 + "intraparenchymal hemorrhage " +
             "</b>"
           );
         }
@@ -556,7 +580,7 @@ class CtHead extends Component {
             impression.push("<b>" + "in right occipital lobe " + "</b>");
           }
         }
-        if (frmData.LeftIntraLocation && frmData.Chronicity1 && frmData.ChicityType1) {
+        if (frmData.LeftIntraLocation && frmData.Chronicity1 && frmData.ChicityType1 && (frmData.LeftIntraBasalGanglia || frmData.LeftIntraThalamus || frmData.LeftIntraCerebellum || frmData.LeftIntraMedulla || frmData.LeftIntraMidBrain || frmData.LeftIntraPons)) {
           let arr = [];
           if (frmData.LeftIntraBasalGanglia) {
             arr.push("basal ganglia");
@@ -624,7 +648,7 @@ class CtHead extends Component {
             impression.push("<b>" + "in right occipital lobe " + "</b>");
           }
         }
-        if (frmData.LeftIntraLocation && !frmData.Chronicity1) {
+        if (frmData.LeftIntraLocation && !frmData.Chronicity1 && (frmData.LeftIntraBasalGanglia || frmData.LeftIntraThalamus || frmData.LeftIntraCerebellum || frmData.LeftIntraMedulla || frmData.LeftIntraMidBrain || frmData.LeftIntraPons)) {
           let arr = [];
           if (frmData.LeftIntraBasalGanglia) {
             arr.push("basal ganglia");
@@ -674,7 +698,7 @@ class CtHead extends Component {
           );
         }
         if(frmData.MidlineShift1) {
-          report +="<b>" + " and midline shift of " + frmData.MidliftText1 + " mm, towards right. " +
+          report +="<b>" + " and midline shaft of " + frmData.MidliftText1 + " mm, towards right. " +
             "</b>";
         }
         if (frmData.Intraventricular1 && frmData.IntraventriType1 === "Yes") {
@@ -816,7 +840,7 @@ class CtHead extends Component {
               );
             }
             if (frmData.RightMassMidlineShift) {
-              report +="<b>" + " and midline shift of " + frmData.SDHrightMidLineShiftText + " mm towards left." + "</b>";
+              report +="<b>" + " and midline shaft of " + frmData.SDHrightMidLineShiftText + " mm towards left." + "</b>";
             }
           }
           ////left SDH
@@ -917,7 +941,7 @@ class CtHead extends Component {
               );
             }
             if (frmData.LeftMassMidlineShift && frmData.LeftMassEffect) {
-              report +="<b>" + " and midline shift of " + frmData.LeftSDHMidLineShiftText + " mm towards right." + "</b>";
+              report +="<b>" + " and midline shaft of " + frmData.LeftSDHMidLineShiftText + " mm towards right." + "</b>";
             }
           }
         }
@@ -1022,7 +1046,7 @@ class CtHead extends Component {
               );
             }
             if (frmData.EDHRightMassMidlineShift) {
-              report +="<b>" + " and midline shift of " + frmData.EDHRightMassMidLineShiftText + "mm towards left." + "</b>";
+              report +="<b>" + " and midline shaft of " + frmData.EDHRightMassMidLineShiftText + "mm towards left." + "</b>";
             }
           }
           ////left EDH
@@ -1124,7 +1148,7 @@ class CtHead extends Component {
               impression.push("<b>" + " with mass effect as described. " + "</b>");
             }
             if (frmData.EDHLeftMassMidlineShift && frmData.EDHLeftMassEffect) {
-              report +="<b>" + " and midline shift of " + frmData.EDHLeftMassMidLineShiftText + " mm towards right." + "</b>";
+              report +="<b>" + " and midline shaft of " + frmData.EDHLeftMassMidLineShiftText + " mm towards right." + "</b>";
             }
           }
         }
@@ -1149,9 +1173,6 @@ class CtHead extends Component {
             }
             if (frmData.SAHRightFalx) {
               arr.push("falx");
-            }
-            if (frmData.SAHRightTantorium) {
-              arr.push("tantorium");
             }
             if (frmData.SAHRightBasalCisterns) {
               arr.push("Basal cisterns");
@@ -1181,9 +1202,6 @@ class CtHead extends Component {
             }
             if (frmData.SAHLefttFalx) {
               arr.push("falx");
-            }
-            if (frmData.SAHLeftTantorium) {
-              arr.push("tantorium");
             }
             if (frmData.SAHLeftBasalCisterns) {
               arr.push("Basal cisterns");
@@ -1273,7 +1291,7 @@ class CtHead extends Component {
         }
         
         if (frmData.EvansIndex) {
-          report +="<br>" + "<br>" + "<b>" + " Evans index is " + frmData.EvansIndex + "mm." + "</b>";
+          report +="<br>" + "<br>" + "<b>" + " Evans index is " + frmData.EvansIndex + "." + "</b>";
         }
         report +="<br>" + "<br>" + "Cerebral parenchyma appears normal." + "<br>" + "<br>" + "Basal ganglia and thalamus are normal." + "<br>" + "<br>" + "Cerebellum is normal." + "<br>" + "<br>" + "Brainstem is normal.";
       }
@@ -1294,7 +1312,7 @@ class CtHead extends Component {
     //Infarct
     if (frmData.Infarct) {
       if (frmData.Location) {
-        if (frmData.InfarctLocationType) {
+        if (frmData.InfractRight) {
           let arr = []
           if (frmData.Frontal) {
             arr.push("frontal")
@@ -1332,7 +1350,47 @@ class CtHead extends Component {
           if (frmData.Midbrain) {
             arr.push('midbrain')
           }
-          report += "<p>" + "<b>" + text.LocationTypetext.replace("{1}", frmData.InfarctLocationType).replace("{2}", arr.join("-")) + "</b>" + "</p>";
+          report += "<p>" + "<b>" + text.LocationTypetext.replace("{2}", arr.join("-")) + "</b>" + "</p>";
+        }
+        if (frmData.InfractLeft) {
+          let arr = []
+          if (frmData.Frontal1) {
+            arr.push("frontal")
+          }
+          if (frmData.Parietal1) {
+            arr.push("parietal")
+          }
+          if (frmData.Temporal1) {
+            arr.push("temporal")
+          }
+          if (frmData.Occipital1) {
+            arr.push("occipital")
+          }
+          if (frmData.BasalGanglia1) {
+            arr.push("basal ganglia")
+          }
+          if (frmData.Thalamus1) {
+            arr.push("thalamus")
+          }
+          if (frmData.CoronaRadiate1) {
+            arr.push("corona radiate")
+          }
+          if (frmData.CentrumSemiovale1) {
+            arr.push('centrum semiovale')
+          }
+          if (frmData.Cerebellum1) {
+            arr.push('cerebellum')
+          }
+          if (frmData.Pons1) {
+            arr.push('pons')
+          }
+          if (frmData.Medulla1) {
+            arr.push('medulla')
+          }
+          if (frmData.Midbrain1) {
+            arr.push('midbrain')
+          }
+          report += "<p>" + "<b>" + text.LocationTypetextleft.replace("{2}", arr.join("-")) + "</b>" + "</p>";
         }
       }
       if (frmData.HemorrhagicTransFormation) {
@@ -1346,7 +1404,7 @@ class CtHead extends Component {
       }
 
       if ((frmData.Location || frmData.TypeofInfarct) && !frmData.HemorrhagicTransFormation) {
-        if (frmData.InfarctLocationType || frmData.InfarctTypes) {
+        if (frmData.InfractRight || frmData.InfarctTypes) {
           let arr = []
           if (frmData.Frontal) {
             arr.push("frontal")
@@ -1384,12 +1442,52 @@ class CtHead extends Component {
           if (frmData.Midbrain) {
             arr.push('midbrain')
           }
-          impression.push("<b>" + text.LocationTypetext1.replace("{1}", frmData.InfarctLocationType).replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct." + "</b>");
+          impression.push("<b>" + text.LocationTypetext1.replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct." + "</b>");
+        }
+        if (frmData.InfractLeft || frmData.InfarctTypes) {
+          let arr = []
+          if (frmData.Frontal1) {
+            arr.push("frontal")
+          }
+          if (frmData.Parietal1) {
+            arr.push("parietal")
+          }
+          if (frmData.Temporal1) {
+            arr.push("temporal")
+          }
+          if (frmData.Occipital1) {
+            arr.push("occipital")
+          }
+          if (frmData.BasalGanglia1) {
+            arr.push("basal ganglia")
+          }
+          if (frmData.Thalamus1) {
+            arr.push("thalamus")
+          }
+          if (frmData.CoronaRadiate1) {
+            arr.push("corona radiate")
+          }
+          if (frmData.CentrumSemiovale1) {
+            arr.push('centrum semiovale')
+          }
+          if (frmData.Cerebellum1) {
+            arr.push('cerebellum')
+          }
+          if (frmData.Pons1) {
+            arr.push('pons')
+          }
+          if (frmData.Medulla1) {
+            arr.push('medulla')
+          }
+          if (frmData.Midbrain1) {
+            arr.push('midbrain')
+          }
+          impression.push("<b>" + text.LocationTypetextleft1.replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct." + "</b>");
         }
       }
       else {
         if ((frmData.Location || frmData.TypeofInfarct) && frmData.HemorrhagicTransFormation) {
-          if (frmData.InfarctLocationType || frmData.InfarctTypes) {
+          if (frmData.InfractRight || frmData.InfarctTypes) {
             let arr = []
             if (frmData.Frontal) {
               arr.push("frontal")
@@ -1427,26 +1525,63 @@ class CtHead extends Component {
             if (frmData.Midbrain) {
               arr.push('midbrain')
             }
-            impression.push("<b>" + text.LocationTypetext1.replace("{1}", frmData.InfarctLocationType).replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct.<br><br>Hemorrhagic transformation seen as described." + "</b>");
+            impression.push("<b>" + text.LocationTypetext1.replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct.<br><br>Hemorrhagic transformation seen as described." + "</b>");
+          }
+        }
+        if ((frmData.Location || frmData.TypeofInfarct) && frmData.HemorrhagicTransFormation) {
+          if (frmData.InfractLeft || frmData.InfarctTypes) {
+            let arr = []
+            if (frmData.Frontal1) {
+              arr.push("frontal")
+            }
+            if (frmData.Parietal1) {
+              arr.push("parietal")
+            }
+            if (frmData.Temporal1) {
+              arr.push("temporal")
+            }
+            if (frmData.Occipital1) {
+              arr.push("occipital")
+            }
+            if (frmData.BasalGanglia1) {
+              arr.push("basal ganglia")
+            }
+            if (frmData.Thalamus1) {
+              arr.push("thalamus")
+            }
+            if (frmData.CoronaRadiate1) {
+              arr.push("corona radiate")
+            }
+            if (frmData.CentrumSemiovale1) {
+              arr.push('centrum semiovale')
+            }
+            if (frmData.Cerebellum1) {
+              arr.push('cerebellum')
+            }
+            if (frmData.Pons1) {
+              arr.push('pons')
+            }
+            if (frmData.Medulla1) {
+              arr.push('medulla')
+            }
+            if (frmData.Midbrain1) {
+              arr.push('midbrain')
+            }
+            impression.push("<b>" + text.LocationTypetextleft1.replace("{2}", arr.join("-")) + "- likely " + frmData.InfarctTypes + " infarct.<br><br>Hemorrhagic transformation seen as described." + "</b>");
           }
         }
       }
     }
 
-    var current_user = JSON.parse(document.getElementById("current-user").textContent);
+    
 
     report +=
-      this.pageBreak() +
-
       this.getImpression(impression, totalCovidPoints) +
       this.getCorads(current_user); // TO BE ADDED
 
     this.setState({ reportFrmData: report }, () => {
       this.props.generateReport(report);
     });
-  }
-  pageBreak() {
-    return '<div class="page-break ck-widget ck-widget_selected" contenteditable="false" draggable="true"></div>';
   }
   //TO BE ADDED
   getCorads(user) {

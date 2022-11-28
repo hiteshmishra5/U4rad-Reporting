@@ -11,3 +11,4 @@ class PersonalInfo(models.Model):
     resume = models.FileField(upload_to='uploads/', null=True, default=None, blank=True)
     uploadpicture = models.FileField(upload_to='uploads/', null=True, default=None, blank=True)
     signature = models.FileField(upload_to='media', null=True, default=None)
+    companylogo = models.FileField(upload_to='media', null=True, default=None)

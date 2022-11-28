@@ -25,6 +25,7 @@ class ReportingBotView(TemplateView):
                 'username': user.first_name,
                 'full_name': "{first_name} {last_name}".format(first_name=user.first_name, last_name=user.last_name),
                 'signature': user.personalinfo.signature.url,
+                'companylogo': user.personalinfo.companylogo.url,
                 'designation': user.workexp.designation,
             }
         }

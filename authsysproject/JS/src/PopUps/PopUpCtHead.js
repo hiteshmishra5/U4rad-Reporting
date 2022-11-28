@@ -55,6 +55,7 @@ export default class PopUpCtHead extends React.Component {
         return;
       }
     }
+    //Infarct
     if (data.Infarct) {
       if (!(data.TypeofInfarct && data.Location)) {
         document.querySelectorAll('label[id^="#/properties/Infarct"]').forEach((el) => {
@@ -62,20 +63,20 @@ export default class PopUpCtHead extends React.Component {
         });
         return;
       }
-      if (!(data.typeofInfarct && data.LocationType)) {
+      if (!(data.InfarctTypes && (data.InfractRight || data.InfractLeft))) {
         document.querySelectorAll('label[id^="#/properties/Infarct"]').forEach((el) => {
           el.classList.add("err");
         });
         return;
       }
-      if (!(data.Frontal || data.Parietal || data.Temporal || data.Occipital
-        || data.BasalGanglia || data.Thalamus || data.CoronaRadiate || data.CentrumSemiovale
-        || data.Cerebellum || data.Pons || data.Medulla || data.Midbrain)) {
-        document.querySelectorAll('label[id^="#/properties/Infarct"]').forEach((el) => {
-          el.classList.add("err");
-        });
-        return;
-      }
+      //if (!(data.Frontal || data.Parietal || data.Temporal || data.Occipital
+      //  || data.BasalGanglia || data.Thalamus || data.CoronaRadiate || data.CentrumSemiovale
+      //  || data.Cerebellum || data.Pons || data.Medulla || data.Midbrain)) {
+      //  document.querySelectorAll('label[id^="#/properties/Infarct"]').forEach((el) => {
+      //    el.classList.add("err");
+      //  });
+      //  return;
+      //}
     }
     if(data.Hemorrhage){
       if (data.IntraRight) {

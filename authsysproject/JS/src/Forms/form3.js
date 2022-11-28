@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { Generate } from "@jsonforms/core";
 import { JsonForms } from "@jsonforms/react";
 //import {vanillaRenderers, vanillaCells, JsonFormsStyleContext } from '@jsonforms/vanilla-renderers';
-import {
-  materialRenderers,
-  materialCells,
-} from "@jsonforms/material-renderers";
+import {materialRenderers, materialCells,} from "@jsonforms/material-renderers";
 
 const _schema = {
   type: "object",
@@ -29,6 +26,10 @@ const _schema = {
     },
 
     // Intra Right
+    RadioType: {
+      type: "string",
+      enum: ["Multiple", "Single"],
+    },
     IntraRight: {
       type: "boolean",
     },
@@ -142,6 +143,10 @@ const _schema = {
       type: "boolean",
     },
     // Intra Left
+    RadioType1: {
+      type: "string",
+      enum: ["Multiple", "Single"],
+    },
     IntraLeft: {
       type: "boolean",
     },
@@ -553,9 +558,6 @@ const _schema = {
     SAHRightFalx: {
       type: "boolean",
     },
-    SAHRightTantorium: {
-      type: "boolean",
-    },
     SAHRightBasalCisterns: {
       type: "boolean",
     },
@@ -582,9 +584,6 @@ const _schema = {
       type: "boolean",
     },
     SAHLefttFalx: {
-      type: "boolean",
-    },
-    SAHLeftTantorium: {
       type: "boolean",
     },
     SAHLeftBasalCisterns: {
@@ -625,7 +624,6 @@ const _schema = {
     },
     EvansIndex: {
       type: "string",
-      description: "Type in mm.",
     },
 
     //**********ChronicIschemic***************
@@ -647,9 +645,11 @@ const _schema = {
     Location: {
       type: "boolean",
     },
-    InfarctLocationType: {
-      type: "string",
-      enum: ['right', 'left'],
+    InfractRight: {
+      type: "boolean",
+    },
+    InfractLeft: {
+      type: "boolean",
     },
     Frontal: {
       type: "boolean",
@@ -688,6 +688,62 @@ const _schema = {
     },
     Midbrain: {
       type: "boolean",
+    },
+    Frontal1: {
+      type: "boolean",
+    },
+    Parietal1: {
+      type: "boolean",
+    },
+    Temporal1: {
+      type: "boolean",
+    },
+    Occipital1: {
+      type: "boolean",
+    },
+    BasalGanglia1: {
+      type: "boolean",
+    },
+    Thalamus1: {
+      type: "boolean",
+    },
+    CoronaRadiate1: {
+      type: "boolean",
+    },
+    CentrumSemiovale1: {
+      type: 'boolean',
+    },
+
+    Cerebellum1: {
+      type: "boolean",
+    },
+    Pons1: {
+      type: 'boolean',
+    },
+
+    Medulla1: {
+      type: "boolean",
+    },
+    Midbrain1: {
+      type: "boolean",
+    },
+    MassEffectInfract: {
+      type: "boolean",
+    },
+    EffacedSulciInfract: {
+      type: "boolean",
+    },
+    EffacedLateralVentriclesInfract: {
+      type: "boolean",
+    },
+    UncalHerniationInfract: {
+      type: "boolean",
+    },
+    InfractMidlineShift: {
+      type: "boolean",
+    },
+    InfractMidLineShiftText: {
+      type: "string",
     },
     HemorrhagicTransFormation: {
       type: "boolean",
@@ -795,6 +851,36 @@ const uischema = {
                   type: "VerticalLayout",
                   label: "",
                   elements: [
+                    //radio button
+                    {
+                      type: "Group",
+                      label: "",
+                      rule: {
+                        effect: "HIDE",
+                        condition: {
+                          scope: "#/properties/RadioType",
+                          schema: {
+                            const: false,
+                          },
+                        },
+                      },
+                      elements: [
+                        {
+                          type: "HorizontalLayout",
+                          label: "",
+                          elements: [
+                            {
+                              type: "Control",
+                              label: "",
+                              scope: "#/properties/RadioType",
+                              options: {
+                                format: "radio",
+                              },
+                            },
+                          ],
+                        },
+                      ],
+                    },
                     // Location**
                     {
                       type: "Control",
@@ -803,7 +889,7 @@ const uischema = {
                     },
                     {
                       type: "Group",
-                      label: "",
+                      label: "     ",
                       rule: {
                         effect: "HIDE",
                         condition: {
@@ -1088,7 +1174,7 @@ const uischema = {
                             },
                             {
                               type: "Control",
-                              label: "Midline Shift",
+                              label: "Midline Shaft",
                               scope: "#/properties/MidlineShift",
                             },
                             {
@@ -1229,6 +1315,36 @@ const uischema = {
                   type: "VerticalLayout",
                   label: "",
                   elements: [
+                    //radio button
+                    {
+                      type: "Group",
+                      label: "",
+                      rule: {
+                        effect: "HIDE",
+                        condition: {
+                          scope: "#/properties/RadioType1",
+                          schema: {
+                            const: false,
+                          },
+                        },
+                      },
+                      elements: [
+                        {
+                          type: "HorizontalLayout",
+                          label: "",
+                          elements: [
+                            {
+                              type: "Control",
+                              label: "",
+                              scope: "#/properties/RadioType1",
+                              options: {
+                                format: "radio",
+                              },
+                            },
+                          ],
+                        },
+                      ],
+                    },
                     // Location**
                     {
                       type: "Control",
@@ -1521,7 +1637,7 @@ const uischema = {
                             },
                             {
                               type: "Control",
-                              label: "Midline Shift",
+                              label: "Midline Shaft",
                               scope: "#/properties/MidlineShift1",
                             },
                             {
@@ -1884,7 +2000,7 @@ const uischema = {
                                             },
                                             {
                                               type: "Control",
-                                              label: "Midline Shift",
+                                              label: "Midline Shaft",
                                               scope:
                                                 "#/properties/RightMassMidlineShift",
                                             },
@@ -2121,7 +2237,7 @@ const uischema = {
                                             },
                                             {
                                               type: "Control",
-                                              label: "Midline Shift",
+                                              label: "Midline Shaft",
                                               scope:
                                                 "#/properties/LeftMassMidlineShift",
                                             },
@@ -2388,7 +2504,7 @@ const uischema = {
                                             },
                                             {
                                               type: "Control",
-                                              label: "Midline Shift",
+                                              label: "Midline Shaft",
                                               scope:
                                                 "#/properties/EDHRightMassMidlineShift",
                                             },
@@ -2627,7 +2743,7 @@ const uischema = {
                                             },
                                             {
                                               type: "Control",
-                                              label: "Midline Shift",
+                                              label: "Midline Shaft",
                                               scope:
                                                 "#/properties/EDHLeftMassMidlineShift",
                                             },
@@ -2765,12 +2881,6 @@ const uischema = {
                                             },
                                             {
                                               type: "Control",
-                                              label: "Tentorium",
-                                              scope:
-                                                "#/properties/SAHRightTantorium",
-                                            },
-                                            {
-                                              type: "Control",
                                               label: "Falx",
                                               scope:
                                                 "#/properties/SAHRightFalx",
@@ -2846,12 +2956,6 @@ const uischema = {
                                               type: "Control",
                                               label: "Temporal",
                                               scope: "#/properties/SAHLeftTemporal",
-                                            },
-                                            {
-                                              type: "Control",
-                                              label: "Tentorium",
-                                              scope:
-                                                "#/properties/SAHLeftTantorium",
                                             },
                                             {
                                               type: "Control",
@@ -2987,41 +3091,6 @@ const uischema = {
               elements: [
                 {
                   type: "Control",
-                  label: "Type of Infarct*",
-                  scope: "#/properties/TypeofInfarct",
-                },
-                {
-                  type: "Group",
-                  label: "",
-                  rule: {
-                    effect: "HIDE",
-                    condition: {
-                      scope: "#/properties/TypeofInfarct",
-                      schema: {
-                        const: false,
-                      },
-                    },
-                  },
-                  elements: [
-                    {
-                      type: "HorizontalLayout",
-                      label: "",
-                      elements: [
-                        {
-                          type: "Control",
-                          label: " ",
-                          scope: "#/properties/InfarctTypes",
-                          options: {
-                            format: "radio",
-                          },
-                        },
-                      ],
-                    },
-                  ],
-                },
-
-                {
-                  type: "Control",
                   label: "Location*",
                   scope: "#/properties/Location",
                 },
@@ -3039,18 +3108,9 @@ const uischema = {
                   },
                   elements: [
                     {
-                      type: "HorizontalLayout",
-                      label: "",
-                      elements: [
-                        {
-                          type: "Control",
-                          label: "",
-                          scope: "#/properties/InfarctLocationType",
-                          options: {
-                            format: "radio",
-                          },
-                        },
-                      ],
+                      type: "Control",
+                      label: "Right",
+                      scope: "#/properties/InfractRight",
                     },
                     {
                       type: "Group",
@@ -3058,8 +3118,10 @@ const uischema = {
                       rule: {
                         effect: "HIDE",
                         condition: {
-                          scope: "#/properties/InfarctLocationType",
-                          schema: { enum: ["", undefined] },
+                          scope: "#/properties/InfractRight",
+                          schema: {
+                            const: false,
+                          },
                         },
                       },
                       elements: [
@@ -3135,10 +3197,231 @@ const uischema = {
                             },
                           ],
                         },
+                      ]
+                    },
+                    //Infract left
+                    {
+                      type: "Control",
+                      label: "Left",
+                      scope: "#/properties/InfractLeft",
+                    },
+                    {
+                      type: "Group",
+                      label: "",
+                      rule: {
+                        effect: "HIDE",
+                        condition: {
+                          scope: "#/properties/InfractLeft",
+                          schema: {
+                            const: false,
+                          },
+                        },
+                      },
+                      elements: [
+                        {
+                          type: "HorizontalLayout",
+                          label: "",
+                          elements: [
+                            {
+                              type: "HorizontalLayout",
+                              label: "",
+                              elements: [
+                                {
+                                  type: "Control",
+                                  label: "Frontal",
+                                  scope: "#/properties/Frontal1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Parietal",
+                                  scope: "#/properties/Parietal1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Temporal",
+                                  scope: "#/properties/Temporal1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Occipital",
+                                  scope: "#/properties/Occipital1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Basal Ganglia",
+                                  scope: "#/properties/BasalGanglia1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Thalamus",
+                                  scope: "#/properties/Thalamus1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Corona Radiate",
+                                  scope: "#/properties/CoronaRadiate1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "centrum Semiovale",
+                                  scope: "#/properties/CentrumSemiovale1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Cerebellum",
+                                  scope: "#/properties/Cerebellum1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Pons",
+                                  scope: "#/properties/Pons1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Medulla",
+                                  scope: "#/properties/Medulla1",
+                                },
+                                {
+                                  type: "Control",
+                                  label: "Mid Brain",
+                                  scope: "#/properties/Midbrain1",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ]
+                    },
+                  ],
+                },
+                {
+                  type: "Control",
+                  label: "Type of Infarct*",
+                  scope: "#/properties/TypeofInfarct",
+                },
+                {
+                  type: "Group",
+                  label: "",
+                  rule: {
+                    effect: "HIDE",
+                    condition: {
+                      scope: "#/properties/TypeofInfarct",
+                      schema: {
+                        const: false,
+                      },
+                    },
+                  },
+                  elements: [
+                    {
+                      type: "HorizontalLayout",
+                      label: "",
+                      elements: [
+                        {
+                          type: "Control",
+                          label: " ",
+                          scope: "#/properties/InfarctTypes",
+                          options: {
+                            format: "radio",
+                          },
+                        },
                       ],
                     },
                   ],
                 },
+                // Mass Effect**
+                {
+                  type: "Control",
+                  label: "Mass Effect*",
+                  scope: "#/properties/MassEffectInfract",
+                },
+                {
+                  type: "Group",
+                  label: "",
+                  rule: {
+                    effect: "HIDE",
+                    condition: {
+                      scope: "#/properties/MassEffectInfract",
+                      schema: {
+                        const: false,
+                      },
+                    },
+                  },
+                  elements: [
+                    {
+                      type: "HorizontalLayout",
+                      label: "",
+                      elements: [
+                        {
+                          type: "Control",
+                          label: "Effaced Sulci",
+                          scope: "#/properties/EffacedSulciInfract",
+                        },
+                        {
+                          type: "Control",
+                          label: "Effaced Lateral Ventricle",
+                          scope:
+                            "#/properties/EffacedLateralVentriclesInfract",
+                        },
+                        {
+                          type: "Control",
+                          label: "Uncal Herniation",
+                          scope: "#/properties/UncalHerniationInfract",
+                        },
+                        {
+                          type: "Control",
+                          label: "Midline Shaft",
+                          scope:
+                            "#/properties/InfractMidlineShift",
+                        },
+                        {
+                          type: "Group",
+                          label: "",
+                          rule: {
+                            effect: "HIDE",
+                            condition: {
+                              scope:
+                                "#/properties/InfractMidlineShift",
+                              schema: {
+                                const: false,
+                              },
+                            },
+                          },
+                          elements: [
+                            {
+                              type: "Group",
+                              label: "",
+                              rule: {
+                                effect: "HIDE",
+                                condition: {
+                                  scope:
+                                    "#/properties/InfractMidlineShift",
+                                  schema: {
+                                    const: false,
+                                  },
+                                },
+                              },
+                              elements: [
+                                {
+                                  type: "VerticalLayout",
+                                  label: "",
+                                  elements: [
+                                    {
+                                      type: "Control",
+                                      label: "Midline Shaft?",
+                                      scope:
+                                        "#/properties/InfractMidLineShiftText",
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                
                 {
                   type: "Control",
                   label: "Hemorrhagic transformation ",

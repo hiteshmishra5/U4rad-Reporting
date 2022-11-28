@@ -93,6 +93,7 @@ def InstPersonalInfo(request):
                                                  emailfraccount=emailfraccount,
                                                  accountcnpr=accountcnpr,
                                                  acccnprphone=acccnprphone)
+
         x.save()
         print("Done.!!")
         return JsonResponse(status=201, data={"message": "success"})
@@ -139,6 +140,7 @@ def PersonalInfo(request):
         resume = request.FILES['resume']
         uploadpicture = request.FILES['uploadpicture']
         signature = request.FILES['signature']
+        companylogo = request.FILES['companylogo']
 
         user = User.objects.create_user(username=email, email=email, password=password, first_name=name)
 
@@ -147,7 +149,7 @@ def PersonalInfo(request):
 
         x = PersonalInfoModel.objects.create(user=user, phone=phone, altphone=altphone,
                                              reference=reference, resume=resume,
-                                             uploadpicture=uploadpicture, signature=signature)
+                                             uploadpicture=uploadpicture, signature=signature, companylogo=companylogo)
         x.save()
         print("Done.!!")
         return JsonResponse(status=201, data={"message": "success"})

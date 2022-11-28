@@ -18,7 +18,7 @@ import MriBrain from "./Utils/MriBrain";
 const options = [{ label: 'X-RAY CHEST', id: 1 }, { label: "X-RAY KNEE", id: 2 }, { label: "X-RAY SPINE(DORSAL)", id: 3 }, { label: "X-RAY SPINE(CERVICAL)", id: 4 }, { label: "X-RAY SPINE(LUMBER)", id: 5 }, { label: "X-RAY RIGHT-SHOULDER", id: 6 }, { label: "X-RAY LEFT-SHOULDER", id: 7}, { label: "X-RAY TEMPLATE", id: 8}, { label: 'CT HEAD', id: 9 }, { label: 'CT PNS', id: 10 }, { label: 'MRI BRAIN', id: 11 },
 ]
 
-
+var current_user = JSON.parse(document.getElementById("current-user").textContent);
 class App extends Component {
   editor = null;
   constructor() {
@@ -50,12 +50,12 @@ class App extends Component {
     });
   }
 
-   
+    
     generatePatientTable() {
     let params = (new URL(document.location)).searchParams;
     const age = params.get("age") ? params.get("age") + "Yr" : "";
-    let table = "<img src= 'https://aarthiscan.com/wp-content/themes/aarthi/img/logo.png'><table>";
-    let tableBody = "<tbody>";
+    let tableBody = this.companyLogo(current_user);
+    tableBody += "<table><tbody>";
     tableBody += "<tr>";
     tableBody += "<td>Patient Name</td><td>" + "NULL" + "</td>";
     tableBody += "<td>Date Of Birth</td><td>" + "NULL" + "</td>";
@@ -73,8 +73,12 @@ class App extends Component {
     tableBody += "<td>Report Date Time</td><td>" + "NULL" + "</td>";
     tableBody += "</tr>";
     tableBody += "</tbody>";
-    table += tableBody + "</table>";
-    return '';
+    tableBody += "</table>";
+
+    return this.companyLogo(current_user);
+  }
+  companyLogo(user) {
+     return ("<img src='" + user.companylogo + "' height='' width='300' />");
   }
 
 

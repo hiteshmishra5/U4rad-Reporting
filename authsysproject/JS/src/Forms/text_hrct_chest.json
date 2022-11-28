@@ -326,8 +326,10 @@
 
 
 
-    "LocationTypetext": "Ill-defined hypodensities seen in {1} {2} lobes.",
-    "LocationTypetext1": "Ill-defined hypodensities in {1} {2} lobes",
+    "LocationTypetext": "Ill-defined hypodensities seen in right {2} lobes.",
+    "LocationTypetextleft": "Ill-defined hypodensities seen in left {2} lobes.",
+    "LocationTypetext1": "Ill-defined hypodensities in right {2} lobes",
+    "LocationTypetextleft1": "Ill-defined hypodensities in left {2} lobes",
 
     "OsteomaText": "Osteoma seen in right {1} sinus measuring {2}mm.",
     "OsteomaText1": "Osteoma seen in left {1} sinus measuring {2}mm.",
