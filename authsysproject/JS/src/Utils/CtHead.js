@@ -254,9 +254,7 @@ class CtHead extends Component {
     this.handleData = this.handleData.bind(this);
     this.formatData = this.formatData.bind(this);
   }
-  pageBreak() {
-    
-  }
+  
   async handleData(data) {
     console.log("====data index", data);
     this.setState({ frmData: data }, async () => {
@@ -272,6 +270,10 @@ class CtHead extends Component {
     let pageBreak = 0;
     let totalCovidPoints = 0;
 
+    if (frmData.NameTextFR3 && frmData.IDTextFR3 && frmData.AgeTextFR3 && frmData.GenderTextFR3)
+    {
+      report += "<pre>" + "<b>" +"<header>" + "<table style='user-select: none;'>" + "<tr>" + "<td>" + "Name: " + frmData.NameTextFR3 + "</td>" + "<td>" + "Patient ID: " + frmData.IDTextFR3 + "</td>" + "<td>" + "Age: " + frmData.AgeTextFR3 + "</td>" + "<td>" + "Gender: " + frmData.GenderTextFR3 + "</td>" + "</tr>" + "</table>" + "</b>" + "</pre>" + "</header>";
+    }
   
     if (
       frmData.cerebralParenchyma ||

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-bbwrvz56rue-v#$jid)f!8^s1lxl5pih((3$+00ir7#=7t$jc*
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.ngrok.io']
-CSRF_TRUSTED_ORIGINS = ['https://127.0.0.1','https://78e0-2401-4900-1c67-1ed0-514c-d878-6891-4dcc.in.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://127.0.0.1' ]
 
 # Application definition
 
@@ -82,8 +82,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'DB1',
         'USER': 'postgres',
-        'PASSWORD': 'aman@1229',
-        'HOST': 'localhost'
+        'PASSWORD': 'sai',
+        'HOST': '34.72.75.30'
     }
 }
 

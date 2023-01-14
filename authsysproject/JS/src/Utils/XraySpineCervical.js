@@ -109,6 +109,10 @@ class XraySpineCervical extends Component {
     let pageBreak = 0;
     let totalCovidPoints = 0;
 
+    if (frmData.NameTextFR10 && frmData.IDTextFR10 && frmData.AgeTextFR10 && frmData.GenderTextFR10)
+    {
+      report += "<pre>" + "<b>" +"<header>" + "<table>" + "<tr>" + "<td>" + "Name: " + frmData.NameTextFR10 + "</td>" + "<td>" + "Patient ID: " + frmData.IDTextFR10 + "</td>" + "<td>" + "Age: " + frmData.AgeTextFR10 + "</td>" + "<td>" + "Gender: " + frmData.GenderTextFR10 + "</td>" + "</tr>" + "</table>" + "</b>" + "</pre>" + "</header>";
+    }
 
     if (frmData.SpineView) {
       let arr = []

@@ -9,6 +9,19 @@ import {
 const _schema = {
   type: "object",
   properties: {
+    NameTextFR12: {
+      type: "string",
+    },
+    IDTextFR12: {
+      type: "string",
+    },
+    AgeTextFR12: {
+      type: "string",
+    },
+    GenderTextFR12: {
+      type: "string",
+      enum: ['Male', 'Female', 'Others'],
+    },
     XrayType: {
       type: "string",
       enum: ['AP', 'Axial', 'Lateral'],
@@ -167,7 +180,37 @@ const uischema = {
     {
       type: "Group",
       elements: [
+        {
+          type: "HorizontalLayout",
+          label: "",
+          elements: [
+            {
+              type: "Control",
+              label: "Name",
+              scope: "#/properties/NameTextFR12",
+            },
+            {
+              type: "Control",
+              label: "Patient ID",
+              scope: "#/properties/IDTextFR12",
+            },
+            {
+              type: "Control",
+              label: "Age",
+              scope: "#/properties/AgeTextFR12",
+            },
+            
+          ],
 
+        },
+        {
+          type: "Control",
+          label: "Gender",
+          scope: "#/properties/GenderTextFR12",
+          options: {
+            format: "radio",
+          },
+        },
         {
           type: "Control",
           label: "X-Ray Type",

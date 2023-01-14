@@ -48,6 +48,11 @@ class XrayRightShoulder extends Component {
     let pageBreak = 0;
     let totalCovidPoints = 0;
 
+    if (frmData.NameTextFR12 && frmData.IDTextFR12 && frmData.AgeTextFR12 && frmData.GenderTextFR12)
+    {
+      report += "<pre>" + "<b>" +"<header>" + "<table>" + "<tr>" + "<td>" + "Name: " + frmData.NameTextFR12 + "</td>" + "<td>" + "Patient ID: " + frmData.IDTextFR12 + "</td>" + "<td>" + "Age: " + frmData.AgeTextFR12 + "</td>" + "<td>" + "Gender: " + frmData.GenderTextFR12 + "</td>" + "</tr>" + "</table>" + "</b>" + "</pre>" + "</header>";
+    }
+
     if ((frmData.XrayType === 'AP' || frmData.Normal || frmData.fracture || frmData.dislocation
       || frmData.degenerative) && !(frmData.XrayType === 'Axial' || frmData.XrayType === 'Lateral')) {
       report += "<h5>" + "<strong>" + "<u>" + "X-RAY RIGHT-SHOULDER AP" + "</u>" + "</strong>" + "</h5>";

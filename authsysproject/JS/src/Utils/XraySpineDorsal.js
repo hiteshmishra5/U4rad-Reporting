@@ -110,6 +110,11 @@ class XraySpineDorsal extends Component {
     let pageBreak = 0;
     let totalCovidPoints = 0;
 
+    if (frmData.NameTextFR14 && frmData.IDTextFR14 && frmData.AgeTextFR14 && frmData.GenderTextFR14)
+    {
+      report += "<pre>" + "<b>" +"<header>" + "<table>" + "<tr>" + "<td>" + "Name: " + frmData.NameTextFR14 + "</td>" + "<td>" + "Patient ID: " + frmData.IDTextFR14 + "</td>" + "<td>" + "Age: " + frmData.AgeTextFR14 + "</td>" + "<td>" + "Gender: " + frmData.GenderTextFR14 + "</td>" + "</tr>" + "</table>" + "</b>" + "</pre>" + "</header>";
+    }
+
     if (frmData.SpineView === 'AP') {
       report += "<h5>" + "<strong>" + "<u>" + "X-RAY SPINE-DORSAL AP" + "</u>" + "</strong>" + "</h5>";
       report += "<h5>" + "<strong>" + "<u>" + "OBSERVATION:" + "</u>" + "</strong>" + "</h5>";

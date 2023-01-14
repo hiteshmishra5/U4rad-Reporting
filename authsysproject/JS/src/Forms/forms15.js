@@ -10,6 +10,19 @@ import {
 const _schema = {
   type: "object",
   properties: {
+    NameTextFR15: {
+      type: "string",
+    },
+    IDTextFR15: {
+      type: "string",
+    },
+    AgeTextFR15: {
+      type: "string",
+    },
+    GenderTextFR15: {
+      type: "string",
+      enum: ['Male', 'Female', 'Others'],
+    },
     LeftKnee: {
       type: "boolean",
     },
@@ -464,11 +477,42 @@ const uischema = {
     {
       type: "Group",
       elements: [
+        {
+          type: "HorizontalLayout",
+          label: "",
+          elements: [
+            {
+              type: "Control",
+              label: "Name",
+              scope: "#/properties/NameTextFR15",
+            },
+            {
+              type: "Control",
+              label: "Patient ID",
+              scope: "#/properties/IDTextFR15",
+            },
+            {
+              type: "Control",
+              label: "Age",
+              scope: "#/properties/AgeTextFR15",
+            },
+            
+          ],
+        },
+        {
+          type: "Control",
+          label: "Gender",
+          scope: "#/properties/GenderTextFR15",
+          options: {
+            format: "radio",
+          },
+        },
         // Normals*********************
         {
           type: "HorizontalLayout",
           label: "",
           elements: [
+            
 
             {
               type: "VerticalLayout",
@@ -2409,7 +2453,7 @@ const styleContextValue = {
     },
   ],
 };
-export default class Form2 extends Component {
+export default class Form15 extends Component {
   constructor(props) {
     super(props);
     this.state = {
